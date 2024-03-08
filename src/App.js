@@ -1,18 +1,17 @@
-import logo from "./logo.svg";
-import "./App.css";
-import React from "react";
-import NavBar from ".components/NavBar";
-import Body from ".components/Body";
-import Footer from ".components/Footer";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Home from './pages/Home';
+import { useState } from 'react';
+import Loader from './components/Loader';
 
 function App() {
+ const [showLoading , setShowLoading] = useState(false)
   return (
-    <div className="App">
-        <NavBar />
-        <Body/>
-        <Footer/>
-      </div>
+    <BrowserRouter>
+     {showLoading ? <Loader/> : null}
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
